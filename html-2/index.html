@@ -5,54 +5,168 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadora</title>
   </head>
+  <style>
+    .calculator {
+      max-width: 210px;
+      min-width: 210px;
+      border-radius: 0.5rem;
+      background-color: #505050;
+      padding-top: 2rem;
+      padding-right: 1rem;
+      padding-right: 1rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .display {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      padding-right: 1rem;
+      color: white;
+      font-size: 2rem;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      padding: 0.5rem;
+      width: 100%;
+    }
+
+    .button-dark {
+      background-color: #303030;
+      color: white;
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.5rem;
+      width: 100%;
+    }
+
+    .button-light {
+      background-color: #f0f0f0;
+      color: black;
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.5rem;
+    }
+
+    .button-orange {
+      background-color: #ff9f0a;
+      color: white;
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.5rem;
+    }
+
+    .buttons div {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .span-2 {
+      grid-column: span 2 / span 2;
+    }
+  </style>
   <body>
     <h1>Calculadora</h1>
 
-    <input type="text" name="num1" id="num1" placeholder="Número 1" />
-    <input type="text" name="num2" id="num2" placeholder="Número 2" />
-    <select name="operation" id="operation">
-      <option value="soma">Soma</option>
-      <option value="subtracao">Subtração</option>
-      <option value="multiplicacao">Multiplicação</option>
-      <option value="divisao">Divisão</option>
-    </select>
-    <button type="submit" id="submit">Calcular</button>
+    <div class="calculator">
+      <div class="display"></div>
+      <div class="buttons">
+        <div class="button-dark" id="clear">AC</div>
+        <div class="button-dark">+/-</div>
+        <div class="button-dark">%</div>
+        <div class="button-orange" id="div">÷</div>
+
+        <div class="button-light">7</div>
+        <div class="button-light">8</div>
+        <div class="button-light">9</div>
+        <div class="button-orange" id="mult">x</div>
+
+        <div class="button-light">4</div>
+        <div class="button-light">5</div>
+        <div class="button-light">6</div>
+        <div class="button-orange" id="minus">-</div>
+
+        <div class="button-light">1</div>
+        <div class="button-light">2</div>
+        <div class="button-light">3</div>
+        <div class="button-orange" id="plus">+</div>
+
+        <div class="button-light span-2">0</div>
+        <div class="button-light">.</div>
+        <div class="button-orange" id="eq">=</div>
+      </div>
+    </div>
 
     <script>
-      const num1 = document.getElementById("num1");
-      const num2 = document.getElementById("num2");
-      const operation = document.getElementById("operation");
-      const submit = document.getElementById("submit");
+      const display = document.querySelector(".display");
+      const plus = document.querySelector("#plus");
+      const minus = document.querySelector("#minus");
+      const div = document.querySelector("#div");
+      const mult = document.querySelector("#mult");
+      const eq = document.querySelector("#eq");
+      let stack = [];
 
-      function calculate() {
-        const n1 = parseFloat(num1.value);
-        const n2 = parseFloat(num2.value);
-        const op = operation.value;
+      plus.addEventListener("click", () => onOperation("+"));
+      minus.addEventListener("click", () => onOperation("-"));
+      div.addEventListener("click", () => onOperation("/"));
+      mult.addEventListener("click", () => onOperation("*"));
+      eq.addEventListener("click", evalStack);
 
-        let result;
+      display.textContent = "0";
 
-        switch (op) {
-          case "soma":
-            result = "" + n1 + ("" + n2);
-            break;
-          case "subtracao":
-            result = n1 - n2;
-            break;
-          case "multiplicacao":
-            result = n1 * n2;
-            break;
-          case "divisao":
-            result = n1 / n2;
-            break;
-          default:
-            result = 0;
-            break;
-        }
+      const buttons = document.querySelectorAll(".button-light");
+      buttons.forEach((button) => {
+        button.addEventListener("click", handleNumberClick);
+      });
 
-        alert(`El resultado es: ${result}`);
+      const clearButton = document.querySelector("#clear");
+      function clearDisplay() {
+        display.textContent = "0";
       }
 
-      submit.addEventListener("click", calculate);
+      function onOperation(operator) {
+        const currentDisplay = display.textContent;
+        stack.push(currentDisplay);
+        stack.push(operator);
+
+        display.textContent = "0";
+      }
+
+      function evalStack() {
+        // evaluate whatever operations are in the stack
+        stack.push(display.textContent);
+        console.log("going to eval", stack);
+        const expression = stack.join("");
+        stack = []; // Clear the stack
+        const result = eval(expression);
+        stack.push("" + result);
+        display.textContent = result;
+        console.log("stack after eval", stack);
+      }
+
+      clearButton.addEventListener("click", clearDisplay);
+
+      function handleNumberClick() {
+        const number = this.textContent;
+        const currentDisplay = display.textContent;
+
+        if (currentDisplay === "0" && number !== ".") {
+          display.textContent = number;
+        } else if (number === "." && currentDisplay.includes(".")) {
+          // Do nothing if the currentDisplay already contains a dot
+        } else {
+          display.textContent = currentDisplay + number;
+        }
+      }
     </script>
   </body>
 </html>
