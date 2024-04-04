@@ -1,0 +1,108 @@
+html {
+  font-family: Sohne, sans-serif;
+}
+
+.calculator {
+  max-width: 210px;
+  min-width: 210px;
+  border-radius: 0.5rem;
+  background-color: #505050;
+  padding-top: 2rem;
+  padding-right: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.display {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 1rem;
+  color: white;
+  font-size: 2rem;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.button-dark {
+  background-color: #303030;
+  color: white;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.button-light {
+  background-color: #f0f0f0;
+  color: black;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+}
+
+.button-orange {
+  background-color: #ff9f0a;
+  color: white;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+}
+
+.buttons div {
+  cursor: pointer;
+  user-select: none;
+}
+
+.span-2 {
+  grid-column: span 2 / span 2;
+}
+
+.calculator-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.prev-operations {
+  background-color: #7c3f02;
+  height: 100%;
+  font-size: 1rem;
+  padding: 0.5rem;
+  max-width: 150px;
+  min-width: 150px;
+  border-radius: 0rem 1rem 1rem 0rem;
+  text-align: right;
+}
+
+.prev-operations h1 {
+  color: white;
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+#no-operations-message {
+  list-style-type: none;
+}
+
+.prev-operations li {
+  color: white;
+  font-size: 0.8rem;
+  text-align: left;
+  margin-left: 0;
+}
+
+.prev-operations ul {
+  padding-left: 0.5rem;
+}
