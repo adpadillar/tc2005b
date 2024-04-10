@@ -41,9 +41,10 @@ function onOperation(operator) {
 }
 
 function evalStack() {
+  if (!buffer) return;
+  stack.push(buffer);
   if (!stack.length) return;
   if (no_op) no_op.remove();
-  stack.push(buffer);
   const result = eval(stack.join(" "));
   display.textContent = result;
   const li = document.createElement("li");
@@ -57,7 +58,7 @@ clearButton.addEventListener("click", clearDisplay);
 
 // NUMBER BUTTONS
 const buttons = document.querySelectorAll(".button-light");
-pow.addEventListener("click", () => handleNumberClick("**"));
+pow.addEventListener("click", () => onOperation("**"));
 buttons.forEach((button) => {
   button.addEventListener("click", () => handleNumberClick(button.textContent));
 });

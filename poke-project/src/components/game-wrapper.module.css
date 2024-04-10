@@ -1,0 +1,140 @@
+.gameboy {
+  width: 26rem;
+  height: 36rem;
+  border-radius: 1.5rem 1.5rem 3rem 1.5rem;
+  background-color: rgb(184, 182, 182);
+  border: 4px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.4rem;
+}
+
+.display {
+  width: 90%;
+  height: 19rem;
+  background: white;
+  border: 4px solid black;
+  border-radius: 0.75rem;
+  overflow-y: scroll;
+  filter: grayscale(0) blur(0.75px) contrast(1.2) sepia(1) hue-rotate(60deg);
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
+}
+
+.controls {
+  width: 90%;
+  padding-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.controls_top {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.d_pad {
+  height: 6rem;
+  width: 6rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.3rem;
+  grid-template-rows: repeat(6, minmax(0, 1fr));
+}
+
+.empty {
+  background-color: transparent;
+  grid-column: span 1 / span 1;
+  grid-row: span 2 / span 2;
+}
+
+.filled_vertical {
+  background-color: black;
+  grid-column: span 1 / span 1;
+  grid-row: span 3 / span 3;
+}
+
+.filled_horizontal {
+  background-color: black;
+  grid-column: span 1 / span 1;
+  grid-row: span 2 / span 2;
+}
+
+.a_and_b {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 0.75rem;
+  transform: rotate(-33deg);
+}
+
+.red_button_hitbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.red_button {
+  height: 2.25rem;
+  width: 2.25rem;
+  border-radius: 99999px;
+  background-color: red;
+}
+
+.red_button:active {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transform: scale(0.8);
+}
+
+.red_button_label {
+  text-align: center;
+  font-size: 13px;
+  padding-top: 0.2rem;
+}
+
+.controls_bottom {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding-top: 2.25rem;
+}
+
+.select_start {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1.5rem;
+}
+
+.gray_button_hitbox {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  transform: rotate(-33deg);
+}
+
+.gray_button {
+  width: 2.75rem;
+  height: 0.8rem;
+  border-radius: 3px;
+  background-color: gray;
+}
+
+.gray_button:active {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transform: scale(0.8);
+}
+
+.gray_button_label {
+  font-size: 10px;
+  padding-top: 0.5rem;
+}

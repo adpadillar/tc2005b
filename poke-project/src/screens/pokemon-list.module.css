@@ -1,0 +1,22 @@
+.display_wrapper {
+  background-color: gray;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  padding-bottom: 1rem;
+  color: rgb(41, 41, 41);
+  font-weight: 600;
+}
+
+.pokemons_grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  overflow: hidden;
+  gap: 1rem;
+}

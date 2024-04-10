@@ -1,0 +1,20 @@
+.selected {
+  background-color: rgb(218, 165, 6);
+}
+
+.pokemon_card {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  flex-direction: column;
+}
+
+.pokemon_image {
+  width: 66%;
+}
+
+.pokemon_name {
+  padding-top: 0.5rem;
+  font-size: 1rem;
+  color: rgb(41, 41, 41);
+}
