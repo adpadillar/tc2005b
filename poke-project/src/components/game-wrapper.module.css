@@ -17,7 +17,7 @@
   border: 4px solid black;
   border-radius: 0.75rem;
   overflow-y: scroll;
-  filter: grayscale(0) blur(0.75px) contrast(1.2) sepia(1) hue-rotate(60deg);
+  filter: grayscale(0) blur(0.6px) contrast(1.2) sepia(1) hue-rotate(60deg);
   font-family: "Pixelify Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;

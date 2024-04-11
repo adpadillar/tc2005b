@@ -1,0 +1,35 @@
+.display_wrapper {
+  background-image: url("https://preview.redd.it/d9spuwer2c491.png?width=1050&format=png&auto=webp&s=9ca8c75c63da9f8bb134e955d73e2770d073375e");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  min-height: 19rem;
+
+  position: relative;
+}
+
+.title {
+  font-size: 2rem;
+  padding-bottom: 1rem;
+  color: rgb(41, 41, 41);
+  font-weight: 600;
+}
+
+.user_pokemon {
+  position: absolute;
+  bottom: 0rem;
+  left: 0.5rem;
+  height: 9rem;
+}
+
+.oponent_pokemon {
+  position: absolute;
+  top: 2.5rem;
+  right: 0px;
+  height: 9rem;
+}

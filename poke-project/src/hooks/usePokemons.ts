@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const POKE_URL = "https://pokeapi.co/api/v2";
+export const POKE_URL = "https://pokeapi.co/api/v2";
 
 export type _Simple_Pokemon = {
   name: string;
@@ -11,6 +11,8 @@ export type _Full_Pokemon = {
   id: number;
   name: string;
   sprites: {
+    back_default: string;
+    front_default: string;
     other: {
       dream_world: {
         front_default: string;
@@ -57,9 +59,10 @@ export const usePokemons = () => {
         const data = _data as _Slash_Pokemon_Endpoint_Response;
         setNextUrl(data.next);
         return Promise.all(
-          data.results.map((pokemon) =>
-            fetch(pokemon.url).then((response) => response.json())
-          )
+          data.results.map((pokemon) => {
+            console.log(pokemon.url);
+            return fetch(pokemon.url).then((response) => response.json());
+          })
         );
       })
       .then((data) => {
