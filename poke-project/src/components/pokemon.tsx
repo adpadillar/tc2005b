@@ -29,7 +29,7 @@ export function RenderPokemon({
     >
       <img
         className={styles.pokemon_image}
-        src={pokemon.sprites.other.dream_world.front_default}
+        src={pokemon.sprites.front_default}
         alt=""
       />
       <h2 className={styles.pokemon_name}>{pokemon?.name}</h2>

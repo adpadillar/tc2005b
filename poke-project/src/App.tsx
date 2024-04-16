@@ -21,13 +21,17 @@ function App() {
     <div className={styles.main}>
       <h1>Games retro</h1>
       <GameWrapper
-        controlDriver={{
-          up: selection.up,
-          down: selection.down,
-          left: selection.prev,
-          right: selection.next,
-          start: () => setCurrentScreen("pokemon-fight"),
-        }}
+        controlDriver={
+          currentScreen === "pokemon-list"
+            ? {
+                up: selection.up,
+                down: selection.down,
+                left: selection.prev,
+                right: selection.next,
+                start: () => setCurrentScreen("pokemon-fight"),
+              }
+            : undefined
+        }
       >
         {currentScreen === "pokemon-list" && (
           <PokemonList pokemons={pokemons} selectedState={selection} />

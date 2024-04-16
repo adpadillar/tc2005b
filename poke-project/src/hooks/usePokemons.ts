@@ -19,6 +19,14 @@ export type _Full_Pokemon = {
       };
     };
   };
+  stats: {
+    base_stat: number;
+    effort: number;
+    stat: {
+      name: string;
+      url: string;
+    };
+  }[];
 };
 
 export type _Slash_Pokemon_Endpoint_Response = {
@@ -60,7 +68,6 @@ export const usePokemons = () => {
         setNextUrl(data.next);
         return Promise.all(
           data.results.map((pokemon) => {
-            console.log(pokemon.url);
             return fetch(pokemon.url).then((response) => response.json());
           })
         );

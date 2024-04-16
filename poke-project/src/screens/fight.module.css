@@ -33,3 +33,29 @@
   right: 0px;
   height: 9rem;
 }
+
+.oponent_pokemon_stats {
+  background-color: gray;
+  font-size: 1rem;
+  position: absolute;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  border: 2px solid black;
+  right: 0.5rem;
+  bottom: 1rem;
+}
+
+.user_pokemon_stats {
+  background-color: gray;
+  font-size: 1rem;
+  position: absolute;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  border: 2px solid black;
+  left: 0.5rem;
+  top: 0.5rem;
+}
