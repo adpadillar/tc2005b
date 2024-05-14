@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+
+import { readFile, writeFile } from "fs/promises";
+import { encode } from "../src/index.js";
+
+/**
+ *
+ * @param {String} inputPath
+ * @param {String} outputPath
+ * @returns {void}
+ */
+async function encodeFile(inputPath, outputPath, shift = "10") {
+  const file = await readFile(inputPath);
+  const text = file.toString();
+  const encoded = encode(text, parseInt(shift));
+  await writeFile(outputPath, encoded);
+}
+
+if (!process.argv[2] || !process.argv[3]) {
+  console.error("ERROR: Incorrect usage");
+  console.error(
+    "USAGE: node encode.js [file-to-cipher] [output-path] [shift=10]"
+  );
+}
+
+encodeFile(process.argv[2], process.argv[3], process.argv[4]);

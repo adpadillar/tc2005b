@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+
+import { readFile, writeFile } from "fs/promises";
+import { decode } from "../src/index.js";
+
+/**
+ *
+ * @param {String} inputPath
+ * @param {String} outputPath
+ * @param {String} shift
+ * @returns {void}
+ */
+async function decodeFile(inputPath, outputPath, shift = "10") {
+  const file = await readFile(inputPath);
+  const text = file.toString();
+  const encoded = decode(text, parseInt(shift));
+  await writeFile(outputPath, encoded);
+}
+
+if (!process.argv[2] || !process.argv[3]) {
+  console.error("ERROR: Incorrect usage");
+  console.error(
+    "USAGE: node encode.js [file-to-decode] [output-path] [shift=10]"
+  );
+  exit(1);
+}
+
+decodeFile(process.argv[2], process.argv[3], process.argv[4]);
