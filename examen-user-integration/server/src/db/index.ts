@@ -7,8 +7,12 @@ class Database {
   private constructor() {
     this.pool = new Pool({
       // Use the Pool class to create a new pool
+      idleTimeoutMillis: 0,
+      connectionTimeoutMillis: 0,
       connectionString:
         "postgres://postgres.oigisgmjkmrhmylxutpu:WDXN3XeR5qFIYBL6@aws-0-us-west-1.pooler.supabase.com:5432/postgres",
+      allowExitOnIdle: false,
+      keepAlive: true,
     });
   }
 

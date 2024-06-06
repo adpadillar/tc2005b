@@ -1,5 +1,5 @@
-import Navigation from "@/components/custom/Navigation";
-import { Button } from "@/components/ui/button";
+import SafeArea from "@/components/custom/SafeArea";
+import UsersSection from "@/components/custom/UsersSection";
 import React from "react";
 
 interface DashboardProps {
@@ -9,8 +9,9 @@ interface DashboardProps {
 const Dashboard: React.FC<DashboardProps> = () => {
   return (
     <div>
-      <Navigation />
-      <Button>Hello world</Button>
+      <SafeArea>
+        <UsersSection />
+      </SafeArea>
     </div>
   );
 };

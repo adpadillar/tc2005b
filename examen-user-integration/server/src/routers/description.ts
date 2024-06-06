@@ -15,7 +15,6 @@ descriptionRouter.get("/:id", async (req, res) => {
 
 descriptionRouter.post("/:id", async (req, res) => {
   try {
-    console.log(req.body);
     const description = await Description.new(parseInt(req.params.id), {
       description: req.body.description,
       prescription: req.body.prescription,

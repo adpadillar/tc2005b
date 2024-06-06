@@ -19,18 +19,20 @@ export class User {
   }
 
   static async all() {
-    console.log("User.all()");
-    const query = "SELECT * FROM users ORDER BY id ASC";
-    const { rows } = await db.query(query);
-    console.log("rows", rows);
+    try {
+      console.log("User.all()");
+      const query = "SELECT * FROM users ORDER BY id ASC";
+      const { rows } = await db.query(query);
 
-    const { success, data: rowsData } = userRow.array().safeParse(rows);
+      const { success, data: rowsData } = userRow.array().safeParse(rows);
 
-    if (!success) throw new Error(`Failed parsing user data`);
+      if (!success) throw new Error(`Failed parsing user data`);
 
-    console.log("parsed rowsData");
-
-    return rowsData.map((row) => new User(row));
+      return rowsData.map((row) => new User(row));
+    } catch (error) {
+      console.error("User.all() error", error);
+      throw error;
+    }
   }
 
   static async get(id: number) {
@@ -53,7 +55,6 @@ export class User {
     age: number;
     bio: string;
   }) {
-    console.log("User.new()");
     const query =
       "INSERT INTO users (name, email, address, phone, age, bio) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *";
     console.log(data);
@@ -65,8 +66,6 @@ export class User {
       data.age ?? null,
       data.bio ?? null,
     ]);
-
-    console.log("rows", rows);
 
     const { success, data: rowData } = userRow.safeParse(rows[0]);
 

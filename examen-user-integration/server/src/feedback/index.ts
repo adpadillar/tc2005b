@@ -33,7 +33,7 @@ export class Feedback {
     try {
       const query =
         "INSERT INTO feedback (feedback, user_id) VALUES ($1, $2) RETURNING *";
-      console.log([data.feedback, userId]);
+
       const { rows } = await db.query(query, [data.feedback, userId]);
       const { success, data: rowData } = feedbackRow.safeParse(rows[0]);
 

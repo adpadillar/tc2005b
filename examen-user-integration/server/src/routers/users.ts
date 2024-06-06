@@ -6,7 +6,6 @@ export const usersRouter = express.Router();
 usersRouter.get("/", async (req, res) => {
   try {
     const users = await User.all();
-    console.log("/users/", users);
     res.json(users.map((user) => user.data));
   } catch (error) {
     res.status(500).json({ error: "Error fetching all users" });

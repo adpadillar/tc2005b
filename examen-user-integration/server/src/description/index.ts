@@ -41,17 +41,11 @@ export class Description {
     const query =
       "INSERT INTO description (description, prescription, userd_id) VALUES ($1, $2, $3) RETURNING *";
 
-    console.log({
-      ...data,
-      userId,
-    });
     const { rows } = await db.query(query, [
       data.description,
       data.prescription,
       userId,
     ]);
-
-    console.log("rows", rows);
 
     const { success, data: rowData } = descriptionRow.safeParse(rows[0]);
 
