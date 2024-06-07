@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import UserPage from "./pages/User";
 import Navigation from "./components/custom/Navigation";
 import { Toaster } from "./components/ui/toaster";
+import Register from "./pages/Register";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,12 @@ const router = createBrowserRouter([
   {
     path: "/user/:userid",
     element: <UserPage />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+    errorElement: <NotFound />,
   },
 ]);
 
