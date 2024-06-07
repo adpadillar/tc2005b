@@ -4,6 +4,7 @@ import NotFound from "./pages/NotFound";
 import { QueryClient, QueryClientProvider } from "react-query";
 import UserPage from "./pages/User";
 import Navigation from "./components/custom/Navigation";
+import { Toaster } from "./components/ui/toaster";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <Toaster />
       <Navigation />
       <RouterProvider router={router} />
     </QueryClientProvider>

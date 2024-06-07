@@ -8,7 +8,7 @@ interface DescriptionCardProps {
 
 const DescriptionCard: React.FC<DescriptionCardProps> = ({ description }) => {
   return (
-    <div className="bg-white transition-all transform hover:scale-105 p-4 rounded-md shadow-lg grid gap-y-2">
+    <div className="bg-white p-4 rounded-md shadow-lg grid gap-y-2">
       <div>
         <h3 className="underline">Description:</h3>
         <p className="text-sm">{description.description}</p>

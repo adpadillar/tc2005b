@@ -30,7 +30,11 @@ export class Description {
 
     if (!success) throw new Error("Failed parsing description row data");
 
-    return rowData.map((data) => new Description(data));
+    // rows with higher id are more recent, we want to show the most recent first
+
+    return rowData
+      .map((row) => new Description(row))
+      .sort((a, b) => b.data.id - a.data.id);
   }
 
   static async new(

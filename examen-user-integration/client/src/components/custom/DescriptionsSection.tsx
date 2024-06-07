@@ -81,7 +81,7 @@ const DescriptionsSection: React.FC<DescriptionsSectionProps> = ({
         />
       </div>
 
-      <div className="grid gap-y-4">
+      <div className="grid gap-y-4 max-h-[32rem] overflow-y-scroll">
         {filterDescriptions(descriptions.data, searchTerm).length === 0 && (
           <div className="w-full flex items-center justify-center p-6">
             <h2 className="text-black/40">No descriptions found</h2>
