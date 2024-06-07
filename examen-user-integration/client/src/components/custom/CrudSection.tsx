@@ -49,12 +49,12 @@ const CrudSection: React.FC<CrudSectionProps> = ({ form, userid }) => {
       if (!form.values.description)
         throw new Error("Please fill out the description field");
 
-      return postChat(`You are working today as a fake AI therapist for a game. 
-        The player has asked for your help for you to generate a realistic looking 
-        prescription related to the description they have given you. The player has 
-        given you the following description: ${form.values.description}. Return the
-        prescription in the following format: Prescription:\n[Your prescription here
-        as a list of bullet points]`);
+      return postChat(
+        `Hello from the player! Given you the following description of 
+        a patient: ${form.values.description}. Please return the prescription in a 
+        short bullet point format.`,
+        true
+      );
     },
     onError: (e: Error) => {
       toast({

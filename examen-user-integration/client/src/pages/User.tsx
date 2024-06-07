@@ -1,4 +1,5 @@
 import CrudSection from "@/components/custom/CrudSection";
+import DatabaseSection from "@/components/custom/DatabaseSection";
 import DescriptionsSection from "@/components/custom/DescriptionsSection";
 import SafeArea from "@/components/custom/SafeArea";
 import UserBanner from "@/components/custom/UserBanner";
@@ -38,15 +39,15 @@ const UserPage: React.FC<UserPageProps> = () => {
                     <TabsTrigger className="w-full" value="history">
                       History
                     </TabsTrigger>
-                    <TabsTrigger className="w-full" value="assistant">
-                      Assistant
+                    <TabsTrigger className="w-full" value="database">
+                      Database
                     </TabsTrigger>
                   </TabsList>
                   <TabsContent value="history">
                     <DescriptionsSection userid={userid} />
                   </TabsContent>
-                  <TabsContent value="assistant">
-                    Assistant screen goes here
+                  <TabsContent value="database">
+                    <DatabaseSection form={form} />
                   </TabsContent>
                 </Tabs>
               </div>
